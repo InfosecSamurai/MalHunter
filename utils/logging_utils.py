@@ -1,23 +1,37 @@
 import logging
 import sys
 from pathlib import Path
+from logging.handlers import RotatingFileHandler
 
-def setup_logging(log_file='malhunter.log'):
-    """Configure logging for the application"""
-    log_format = '%(asctime)s - %(levelname)s - %(name)s - %(message)s'
+def setup_logging(debug=False):
+    """Configure application logging"""
+    log_level = logging.DEBUG if debug else logging.INFO
     
-    # Create logs directory if it doesn't exist
-    log_path = Path(log_file)
-    log_path.parent.mkdir(exist_ok=True)
+    # Main logger
+    logger = logging.getLogger()
+    logger.setLevel(log_level)
     
-    logging.basicConfig(
-        level=logging.INFO,
-        format=log_format,
-        handlers=[
-            logging.FileHandler(log_file),
-            logging.StreamHandler(sys.stdout)
-        ]
+    # Formatter
+    formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
+    
+    # Console handler
+    console = logging.StreamHandler(sys.stdout)
+    console.setFormatter(formatter)
+    logger.addHandler(console)
+    
+    # File handler
+    log_file = Settings.LOGS_DIR / 'malhunter.log'
+    log_file.parent.mkdir(exist_ok=True)
+    
+    file_handler = RotatingFileHandler(
+        log_file,
+        maxBytes=5*1024*1024,  # 5MB
+        backupCount=3
+    )
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
     
     # Suppress noisy library logs
     logging.getLogger('pefile').setLevel(logging.WARNING)
