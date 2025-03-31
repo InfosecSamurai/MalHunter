@@ -1,4 +1,4 @@
-# CONTRIBUTING.md for MalHunter - Advanced Malware Analysis Sandbox
+# MalHunter - Advanced Malware Analysis Sandbox
 
 [![Build Status](https://img.shields.io/github/workflow/status/InfosecSamurai/malhunter/CI)](https://github.com/InfosecSamurai/malhunter/actions)
 [![Code Coverage](https://img.shields.io/codecov/c/github/InfosecSamurai/malhunter)](https://codecov.io/gh/InfosecSamurai/malhunter)
