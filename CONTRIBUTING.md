@@ -23,12 +23,13 @@ Start by forking the repository to your own GitHub account. This allows you to f
 2. Create a Branch
 
 After cloning the repository, create a new branch for your work. It’s best practice to create a branch for each feature or bug fix you’re working on.
-
+   ```bash
 git checkout -b feature/your-feature-name
 
 Or for bug fixes:
 
 git checkout -b bugfix/issue-number
+   ```
 
 3. Make Your Changes
 
@@ -50,15 +51,17 @@ Tests: If applicable, add new tests for your changes. We aim for high test cover
 Once your changes are ready, commit them to your branch. Write clear and concise commit messages.
 
 Example:
-
+   ```bash
 git add .
 git commit -m "Added new YARA rule support"
+   ```
 
 5. Push Your Changes
 
 Push your changes to your forked repository on GitHub.
-
+   ```bash
 git push origin feature/your-feature-name
+   ```
 
 6. Open a Pull Request (PR)
 
@@ -149,14 +152,14 @@ Running Tests Locally:
 To run the test suite locally:
 
 1. Install test dependencies:
-
+   ```bash
 pip install -r requirements-dev.txt
-
+   ```
 
 2. Run the tests:
-
+   ```bash
 pytest
-
+   ```
 
 
 Tests should pass before submitting your pull request.
